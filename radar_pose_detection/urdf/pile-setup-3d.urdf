@@ -9,7 +9,6 @@
     <color rgba="0.9 0.9 0.9 1"/>
   </material>
 
-
   <link name="base_link">
     <visual>
       <geometry>
@@ -37,7 +36,7 @@
 
   <link name="steel_pipe_y_dummy" />
 
-  <joint name="base_to_pipe_y" type="continuous">
+  <joint name="base_to_pipe_z" type="continuous">
     <parent link="steel_pipe_y_dummy"/>
     <child link="steel_pipe"/>
     <axis xyz="0 0 1"/>

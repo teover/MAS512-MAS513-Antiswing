@@ -1,6 +1,6 @@
 <launch>
 
-  <arg name="model" default="$(find radar_pose_detection)/urdf/pile-setup.urdf"/>
+  <arg name="model" default="$(find radar_pose_detection)/urdf/pile-setup-3d.urdf"/>
   <arg name="gui" default="false" />
   <arg name="rvizconfig" default="$(find radar_pose_detection)/rviz/urdf.rviz" />
 

@@ -11,12 +11,14 @@ from sensor_msgs.msg import Imu
 from tf.transformations import euler_from_quaternion
 
 
-class CommandToJointStateX:
+class CommandToJointState:
     def __init__(self):
-        self.joint_name = "base_to_pipe_x"
         self.joint_state = JointState()
-        self.joint_state.name.append(self.joint_name)
-        self.joint_state.position.append(0.0)
+        self.joint_state.name.append("base_to_pipe_x")
+        self.joint_state.name.append("base_to_pipe_y")
+        self.joint_state.name.append("base_to_pipe_z")
+        print(self.joint_state.name)
+        self.joint_state.position.append([0.0, 0.0, 0.0])
         self.joint_state.velocity.append(0.0)
         self.joint_pub = rospy.Publisher("joint_states", JointState, queue_size=1)
         self.command_sub = rospy.Subscriber("/imu_iphone", Imu, self.command_callback, queue_size=1)
@@ -24,34 +26,17 @@ class CommandToJointStateX:
 
 
     def command_callback(self, msg):
-        orientation_list = [msg.orientation.x, msg.orientation.y, msg.orientation.z, msg.orientation.w]
+        orientation_list = [msg.orientation.x, msg.orientation.y, msg.orientation.z, msg.orientation.w]        
         (roll, pitch, yaw) = euler_from_quaternion(orientation_list)
-        self.joint_state.position[0] = roll
+        self.joint_state.position = (roll, -pitch, yaw)
         self.joint_state.header.stamp = rospy.Time.now()
         self.joint_pub.publish(self.joint_state)
 
-class CommandToJointStateY:
-    def __init__(self):
-        self.joint_name = "base_to_pipe_y"
-        self.joint_state = JointState()
-        self.joint_state.name.append(self.joint_name)
-        self.joint_state.position.append(0.0)
-        self.joint_state.velocity.append(0.0)
-        self.joint_pub = rospy.Publisher("joint_states", JointState, queue_size=1)
-        self.command_sub = rospy.Subscriber("/imu_iphone", Imu,
-                                            self.command_callback, queue_size=1)
 
-    def command_callback(self, msg):
-        orientation_list = [msg.orientation.x, msg.orientation.y, msg.orientation.z, msg.orientation.w]
-        (roll, pitch, yaw) = euler_from_quaternion(orientation_list)
-        self.joint_state.position[0] = pitch
-        self.joint_state.header.stamp = rospy.Time.now()
-        self.joint_pub.publish(self.joint_state)
 
 if __name__ == '__main__':
     rospy.init_node('command_to_joint_state')
-    command_to_joint_stateX = CommandToJointStateX()
-    command_to_joint_stateY = CommandToJointStateY()
+    command_to_joint_stateX = CommandToJointState()
     rospy.spin()
 
 
