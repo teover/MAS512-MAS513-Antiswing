@@ -28,7 +28,7 @@ class CommandToJointState:
     def command_callback(self, msg):
         orientation_list = [msg.orientation.x, msg.orientation.y, msg.orientation.z, msg.orientation.w]        
         (roll, pitch, yaw) = euler_from_quaternion(orientation_list)
-        self.joint_state.position = (roll, -pitch, yaw)
+        self.joint_state.position = (roll, pitch, yaw)
         self.joint_state.header.stamp = rospy.Time.now()
         self.joint_pub.publish(self.joint_state)
 
