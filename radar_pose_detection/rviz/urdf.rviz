@@ -6,6 +6,8 @@ Panels:
       Expanded:
         - /Global Options1
         - /Grid1
+        - /RobotModel1
+        - /PointCloud21
       Splitter Ratio: 0.5
     Tree Height: 432
   - Class: rviz/Views
@@ -48,11 +50,6 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         steel_pipe:
           Alpha: 1
           Show Axes: false
@@ -62,6 +59,15 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        steel_pipe_y_dummy:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        ti_mmwave:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -82,11 +88,39 @@ Visualization Manager:
         {}
       Update Interval: 0
       Value: false
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: Intensity
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Min Color: 0; 0; 255
+      Name: PointCloud2
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.10000000149011612
+      Style: Spheres
+      Topic: /ti_mmwave/radar_scan_pcl
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: base_link
+    Fixed Frame: ti_mmwave
     Frame Rate: 60
   Name: root
   Tools:
@@ -95,25 +129,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 3.010720729827881
+      Distance: 3.8074443340301514
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: 0.4898911416530609
+        Y: -0.3963050842285156
+        Z: -0.39766889810562134
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.43999990820884705
+      Pitch: 0.24479645490646362
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.4768162965774536
+      Yaw: 4.296818733215332
     Saved: ~
 Window Geometry:
   Displays:
