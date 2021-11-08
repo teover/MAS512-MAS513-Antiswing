@@ -10,7 +10,7 @@
   </material>
 
 
-  <link name="base_link">
+  <link name="ti_mmwave">
     <visual>
       <geometry>
         <box size="3 0.1 0.1"/>
@@ -20,7 +20,7 @@
   </link>
 
   <joint name="base_to_pipe_x" type="continuous">
-    <parent link="base_link"/>
+    <parent link="ti_mmwave"/>
     <child link="steel_pipe_x_dummy"/>
     <axis xyz="1 0 0"/>
     <origin xyz="0 0 0"/>
