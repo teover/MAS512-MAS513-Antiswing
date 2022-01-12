@@ -41,7 +41,7 @@ class CommandToJointState:
 
 
 if __name__ == '__main__':
-    rospy.init_node('command_to_joint_state')
+    rospy.init_node('command_to_joint_state_imu')
     command_to_joint_stateX = CommandToJointState()
     rospy.spin()
 
